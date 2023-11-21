@@ -24,6 +24,6 @@ public class UserServiceController {
 
     @GetMapping("/user_login/{email}/{password}")
     public ResponseEntity<Flux<BusService>> loginUserToBusServiceThrowEmailAndPassword(@PathVariable String email, @PathVariable String password){
-      return new ResponseEntity<>(userServiceService.loginByEmailAndPassword(email,password),HttpStatus.ACCEPTED);
+      return new ResponseEntity<Flux<BusService>>(userServiceService.loginByEmailAndPassword(email,password),HttpStatus.ACCEPTED);
     }
 }

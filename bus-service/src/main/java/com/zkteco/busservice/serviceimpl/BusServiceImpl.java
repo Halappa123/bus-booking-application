@@ -46,4 +46,11 @@ public class BusServiceImpl implements BusService {
 
         return daoList;
     }
+
+    @Override
+    public ResultEntity getAllBusDetailsList() {
+        List<BusDao> list=busRepository.findAll();
+        System.out.println("All Bus Details successfully. total buses are "+list.size());
+        return  new ResultEntity("login successfully and available buses are",list);
+    }
 }

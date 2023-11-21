@@ -2,6 +2,7 @@ package com.zkteco.busservice.controller;
 
 import com.zkteco.busservice.dao.BusDao;
 import com.zkteco.busservice.dto.BusDto;
+import com.zkteco.busservice.dto.ResultEntity;
 import com.zkteco.busservice.service.BusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,4 +27,11 @@ public class BusController {
     public ResponseEntity<List<BusDao>> getAllBusDetails(){
         return new ResponseEntity<List<BusDao>>(busService.getAllBusDetails(),HttpStatus.ACCEPTED);
     }
+
+    @GetMapping("/get_all_bus_details_list")
+    public ResponseEntity<ResultEntity> getAllBusDetails1(){
+        return new ResponseEntity<ResultEntity>(busService.getAllBusDetailsList(),HttpStatus.ACCEPTED);
+    }
+
+
 }
