@@ -5,6 +5,7 @@ import com.zkteco.busservice.dto.BusDto;
 import com.zkteco.busservice.dto.ResultEntity;
 import com.zkteco.busservice.repository.BusRepository;
 import com.zkteco.busservice.service.BusService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,25 +20,33 @@ public class BusServiceImpl implements BusService {
     @Autowired
     private BusRepository busRepository;
 
-    @Override
-    public BusDao saveAllBusDetails(BusDto busDto) {
-        BusDao busDao=new BusDao();
-        busDao.setBusNumber(busDto.getBusNumber());
-        busDao.setCapacity(busDto.getCapacity());
-        busDao.setModel(busDto.getModel());
-        busDao.setType(busDto.getType());
-        busDao.setRoute(busDto.getRoute());
-        busDao.setAvailableSeats(busDto.getAvailableSeats());
-        busDao.setOperator(busDto.getOperator());
-        busDao.setDepartureDateTime(busDto.getDepartureDateTime());
-        busDao.setArrivalDateTime(busDto.getArrivalDateTime());
-        busDao.setContactNumber(busDto.getContactNumber());
-        busDao.setOrigin(busDto.getOrigin());
-        busDao.setDestination(busDto.getDestination());
-        busRepository.save(busDao);
-        System.out.println(" All Bus Details Are saved successfully " +busDao);
-        return busDao;
-    }
+//    @Override
+//    public BusDao saveAllBusDetails(BusDto busDto) {
+//        BusDao busDao=new BusDao();
+//        busDao.setBusNumber(busDto.getBusNumber());
+//        busDao.setCapacity(busDto.getCapacity());
+//        busDao.setModel(busDto.getModel());
+//        busDao.setType(busDto.getType());
+//        busDao.setRoute(busDto.getRoute());
+//        busDao.setAvailableSeats(busDto.getAvailableSeats());
+//        busDao.setOperator(busDto.getOperator());
+//        busDao.setDepartureDateTime(busDto.getDepartureDateTime());
+//        busDao.setArrivalDateTime(busDto.getArrivalDateTime());
+//        busDao.setContactNumber(busDto.getContactNumber());
+//        busDao.setOrigin(busDto.getOrigin());
+//        busDao.setDestination(busDto.getDestination());
+//        busRepository.save(busDao);
+//        System.out.println(" All Bus Details Are saved successfully " +busDao);
+//        return busDao;
+//    }
+        @Override
+        public BusDao saveAllBusDetails(BusDto busDto) {
+        BusDao busDao = new BusDao();
+        BeanUtils.copyProperties(busDto, busDao);
+        BusDao savedBus = busRepository.save(busDao);
+        System.out.println("All Bus Details Are saved successfully: " + savedBus);
+        return savedBus;
+}
 
     public List<BusDao> getAllBusDetails() {
          List<BusDao> daoList=busRepository.findAll();
