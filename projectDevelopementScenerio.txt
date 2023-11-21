@@ -1,0 +1,56 @@
+                                   BUS BOOKING MICROSERVICE APPLICATION :
+                                 -----------------------------------------------
+
+
+      * Services we are writing to achive this application are as follows:->
+
+      1) user-service.
+      2) bus-service.
+      3) bus-booking-service.
+      4) payment-service.
+      5) naming-server/discoveery-server/eureka-server.
+      6) api-gateway
+      7) docker deployment.
+
+
+
+   1) User-service :
+
+          * User-Service-Controller.
+          * User-Service-Repository.
+          * USer-service-Service.
+          * User-Service-ServiceImpl.
+          * User-Service-Dao.
+          * User-Service-Dto.
+
+         application.properties :
+             
+                       spring.application.name=bus-service
+                       #If you are Spring Boot >=2.5.0, You would need to configure this in application.properties
+                       spring.config.import=optional:configserver:http://localhost:8888
+                       eureka.client.serviceurl.defaultZone=http://localhost:8761/eureka
+  
+        dependencies:
+                
+            * Thease dependicies are added to enable or register services to the eureka server. 
+                spring boot Acuatator. 
+                config client.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 

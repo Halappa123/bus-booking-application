@@ -1,0 +1,67 @@
+         When designing a microservices architecture, each service should be designed to handle a specific business 
+         capability. Here, I'll provide a brief description and some example attributes for each of the services
+         you mentioned: user-service, bus-service, bus-booking-service, and payment-service.
+
+User Service:
+-------------
+
+Attributes:
+userId: Unique identifier for each user.
+firstName and lastName: User's name.
+email: User's email address.
+password: User's hashed password.
+address: User's address.
+phoneNumber: User's contact number.
+createdAt: Timestamp indicating when the user account was created.
+updatedAt: Timestamp indicating when the user account was last updated.
+
+Responsibilities:
+Manage user information.
+Handle user authentication and authorization.
+
+Bus Service:
+---------------
+
+Attributes:
+busId: Unique identifier for each bus.
+busNumber: Identification number of the bus.
+capacity: Maximum number of passengers the bus can accommodate.
+model: Bus model or type.
+operator: Bus operating company or owner.
+route: The route the bus follows.
+departureTime and arrivalTime: Timing details of the bus schedule.
+Responsibilities:
+Manage information related to available buses.
+Provide details about bus schedules and routes.
+
+Bus Booking Service:
+---------------------
+
+Attributes:
+bookingId: Unique identifier for each booking.
+userId: Reference to the user making the booking.
+busId: Reference to the bus being booked.
+seatNumber: The seat number booked by the user.
+bookingTime: Timestamp indicating when the booking was made.
+status: Current status of the booking (e.g., confirmed, canceled).
+Responsibilities:
+Handle the process of booking a bus by a user.
+Manage and track the status of bus bookings.
+
+Payment Service:
+--------------------
+
+Attributes:
+paymentId: Unique identifier for each payment.
+bookingId: Reference to the booking associated with the payment.
+userId: Reference to the user making the payment.
+amount: The amount paid for the booking.
+paymentTime: Timestamp indicating when the payment was made.
+paymentStatus: Current status of the payment (e.g., success, pending).
+Responsibilities:
+Handle payment transactions for bus bookings.
+Ensure the security and integrity of payment processes.
+
+            These are just examples, and the actual attributes and responsibilities may vary based on your specific requirements.
+            Additionally, each service should have well-defined APIs for communication, 
+            and you might use technologies like RESTful APIs, gRPC, or message queues for inter-service communication in a microservices architecture.
