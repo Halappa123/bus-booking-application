@@ -1,0 +1,29 @@
+user-service url :
+http://loclahost:8000/api/user_registry
+http://localhost:8000/api/user_login/{email}/{password}
+
+bus-service url :
+http://localhost:8100/api/get_all_bus_details
+
+eureka-server url :
+http://localhost:8761/
+
+API GATEWAY URLS :
+http://localhost:8765/BUS-SERVICE/api/get_all_bus_details
+http://localhost:8765/USER-SERVICE/api/user_login/{email}/{password}
+
+Mention service name as small by adding one property to application.properties
+
+http://localhost:8765/bus-service/api/get_all_bus_details
+http://localhost:8765/user-service/api/user_login/{email}/{password}
+http://localhost:8765/bus-service/api/get_all_bus_details_list
+
+
+http://localhost:8765/api/get_all_bus_details
+http://localhost:8765/api/get_all_bus_details_list
+http://localhost:8765/api/user_login/{email}/{password}
+
+
+
+
+
