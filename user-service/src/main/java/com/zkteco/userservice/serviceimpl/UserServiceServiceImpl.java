@@ -18,7 +18,7 @@ public class UserServiceServiceImpl implements UserServiceService {
 
    // private static final Logger logger = LoggerFactory.getLogger(UserServiceServiceImpl.class);
 
-    private final String baseUrl="http://localhost:8001/api";
+    private final String baseUrl="http://localhost:8100/api";
 
 
     @Autowired

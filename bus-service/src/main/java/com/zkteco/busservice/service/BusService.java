@@ -12,4 +12,6 @@ public interface BusService {
     List<BusDao> getAllBusDetails();
 
     ResultEntity getAllBusDetailsList();
+
+    ResultEntity getBusByOriginAndDestination(String origin, String destination);
 }

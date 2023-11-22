@@ -33,5 +33,10 @@ public class BusController {
         return new ResponseEntity<ResultEntity>(busService.getAllBusDetailsList(),HttpStatus.ACCEPTED);
     }
 
+    @GetMapping("/get_bus/{origin}/{destination}")
+    public ResponseEntity<ResultEntity> getBusByOriginAndDestination(@PathVariable String origin,@PathVariable String destination){
+        return new ResponseEntity<ResultEntity>(busService.getBusByOriginAndDestination(origin,destination),HttpStatus.ACCEPTED);
+    }
+
 
 }

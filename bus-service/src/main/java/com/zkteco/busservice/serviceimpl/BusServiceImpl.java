@@ -62,4 +62,20 @@ public class BusServiceImpl implements BusService {
         System.out.println("All Bus Details successfully. total buses are "+list.size());
         return  new ResultEntity("login successfully and available buses are",list);
     }
+
+    @Override
+    public ResultEntity getBusByOriginAndDestination(String origin, String destination) {
+        BusDao existBus = null;
+        try {
+            existBus = busRepository.findByOriginAndDestination(origin, destination);
+
+            if (existBus == null) {
+                return new ResultEntity("busses are not available", null);
+            }
+            return new ResultEntity("available busses are ", existBus);
+        } catch (Exception e) {
+            System.out.println("failed to fetched bus details " + e);
+        }
+        return new ResultEntity("data doesn't exit", existBus);
+    }
 }
