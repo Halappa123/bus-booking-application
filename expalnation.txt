@@ -1,6 +1,9 @@
          When designing a microservices architecture, each service should be designed to handle a specific business 
          capability. Here, I'll provide a brief description and some example attributes for each of the services
-         you mentioned: user-service, bus-service, bus-booking-service, and payment-service.
+         you mentioned: user-service, 
+                        bus-service, 
+                        bus-booking-service, 
+                        payment-service.
 
 User Service:
 -------------

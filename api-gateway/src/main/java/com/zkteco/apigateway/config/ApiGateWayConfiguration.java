@@ -23,7 +23,7 @@ public class ApiGateWayConfiguration {
                         .uri("http://httpbin.org:80"))
                 .route(p->p.path("/api/**")
                         .uri("lb://bus-service"))
-                .route(p->p.path("/api/user_login/**")
+                .route(p->p.path("/api/**")
                         .uri("lb://user-service"))
 //                .route(p->p.path("/api/**")
 //                        .uri("lb://user-service"))
