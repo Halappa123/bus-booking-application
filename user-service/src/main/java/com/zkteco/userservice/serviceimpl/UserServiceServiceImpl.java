@@ -45,6 +45,7 @@ public class UserServiceServiceImpl implements UserServiceService {
                return null;
            }
 
+           System.out.println("user login successfully "+existUser);
            System.out.println(baseUrl);
 
         WebClient webClient=WebClient.create(baseUrl);
@@ -55,12 +56,26 @@ public class UserServiceServiceImpl implements UserServiceService {
                 .bodyToFlux(BusService.class);
         System.out.println(busService);
 
-        if (busService==null){
-            System.out.println("failed to fetch bus details");
-        }
-
         System.out.println("login successfully to bus service and available busses are "+busService);
         return busService;
 
+    }
+
+    @Override
+    public UserServiceDao loginByPhNoPassword(Long phNo, String password) {
+       UserServiceDao existUser= userServiceRepository.findByPhNoAndPassword(phNo,password);
+       if (existUser==null){
+          return null;
+       }
+       if (password!=null){
+           //verify the password
+           if (existUser.getPassword().equals(password)){
+               return existUser;
+           }
+           else {
+               return null;
+           }
+       }
+       return existUser;
     }
 }

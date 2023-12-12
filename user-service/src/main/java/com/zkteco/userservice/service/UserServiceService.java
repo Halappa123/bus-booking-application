@@ -11,4 +11,6 @@ public interface UserServiceService {
     UserServiceDao saveRegistredUser(UserServiceDto userServiceDto);
 
     Flux<BusService> loginByEmailAndPassword(String email, String password);
+
+    UserServiceDao loginByPhNoPassword(Long phNo, String password);
 }

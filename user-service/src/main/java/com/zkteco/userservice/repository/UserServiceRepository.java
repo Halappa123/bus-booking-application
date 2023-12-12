@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface UserServiceRepository extends JpaRepository<UserServiceDao, Long>{
    Optional<UserServiceDao> findByEmailAndPassword(String email, String password);
+
+    UserServiceDao findByPhNoAndPassword(Long phNo, String password);
 }
