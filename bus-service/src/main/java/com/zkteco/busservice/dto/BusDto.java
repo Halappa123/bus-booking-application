@@ -24,4 +24,5 @@ public class BusDto {
     private Long contactNumber;
     private String origin;
     private String destination;
+    private int fair;
 }

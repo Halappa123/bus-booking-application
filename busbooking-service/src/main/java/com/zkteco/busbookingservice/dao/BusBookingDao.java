@@ -8,14 +8,16 @@ public class BusBookingDao {
 
     @Id
     private String bookingId;
-
-
     private Long userId;
-
     private String busId;
-    private int seats;
+    private int seatNo;
     private Long bookingTime;
-
-    private String status;
+    private String bookingStatus;
+    private String paymentStatus;
+    private String departureDateTime;
+    private String arrivalDateTime;
+    private Long contactNumber;
+    private String origin;
+    private String destination;
 
 }

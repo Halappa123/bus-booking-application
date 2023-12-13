@@ -67,9 +67,9 @@ public class UserServiceServiceImpl implements UserServiceService {
        if (existUser==null){
           return null;
        }
-       if (password!=null){
+       if (password!=null && phNo!=null){
            //verify the password
-           if (existUser.getPassword().equals(password)){
+           if (existUser.getPassword().equals(password) && existUser.getPhNo().equals(phNo)){
                return existUser;
            }
            else {

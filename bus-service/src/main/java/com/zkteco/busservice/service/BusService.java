@@ -14,4 +14,10 @@ public interface BusService {
     ResultEntity getAllBusDetailsList();
 
     ResultEntity getBusByOriginAndDestination(String origin, String destination);
+
+    ResultEntity deleteById(String busId);
+
+    ResultEntity deleteAllDetails();
+
+    List<BusDao> getBusDetailsByOriginDestinationAndDepartureDateTime(String origin, String destination, String departureDateTime);
 }

@@ -53,5 +53,8 @@ public class BusDao {
     @Column(name = "Bus_Destination",nullable = false)
     private String destination;
 
+    @Column(name="Bus_Fair",nullable = false)
+    private int fair;
+
 
 }

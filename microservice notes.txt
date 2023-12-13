@@ -18,3 +18,30 @@ CIRCUIT BREAKER :is implemented when services become slow we can give fall back 
 
 resilience4j.retry.instances.sample-api.maxAttempts=5 #NEW
 #resilience4j.retry.instances.sample-api.maxRetryAttempts=5 #OLD
+
+
+  1) Service Communication protocals :
+
+     RESTful APIs, GraphQL, or message queues (e.g., RabbitMQ, Apache Kafka).
+
+    * RESTful APIs -->its representational state transfer(REST) that uses stateless communication protocal over HTTP
+
+                   -->commanly uses JSON as a dataformat.
+
+                   -->its a request and response model . client  request for a specific endpoints (urls) perform operation
+                      and respond with data.
+
+
+    * GraphQL -->GraphQL is a query language for APIs and a runtime for executing those queries with existing data.
+
+              -->Typically uses the JSON for the data exchange.
+
+              -->Request and Response model client can request exactlty and server response with data in json .
+
+              -->more flexibility over the response data while fetching them can be reduce over-fetching .
+
+
+    * Communication Style: Message queues are based on the publish-subscribe or message-broker pattern, 
+                           allowing asynchronous communication between different components.
+
+

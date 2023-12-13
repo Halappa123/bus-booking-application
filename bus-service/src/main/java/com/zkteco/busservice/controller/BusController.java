@@ -38,5 +38,20 @@ public class BusController {
         return new ResponseEntity<ResultEntity>(busService.getBusByOriginAndDestination(origin,destination),HttpStatus.ACCEPTED);
     }
 
+    @DeleteMapping("/delete/{busId}")
+    public ResponseEntity<ResultEntity> deleteBusDetailsById(@PathVariable String busId){
+        return new ResponseEntity<ResultEntity>(busService.deleteById(busId),HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping("/delete_all")
+    public ResponseEntity<ResultEntity> deleteAllBusDetails(){
+        return new ResponseEntity<ResultEntity>(busService.deleteAllDetails(),HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("/book_bus/{origin}/{destination}/{departureDateTime}")
+    public ResponseEntity<List<BusDao>> getBusDetails(@PathVariable String origin,@PathVariable String destination,@PathVariable String departureDateTime){
+        return new ResponseEntity<List<BusDao>>(busService.getBusDetailsByOriginDestinationAndDepartureDateTime(origin,destination,departureDateTime),HttpStatus.ACCEPTED);
+    }
+
 
 }
