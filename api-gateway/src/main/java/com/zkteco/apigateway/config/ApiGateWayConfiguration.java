@@ -25,8 +25,8 @@ public class ApiGateWayConfiguration {
                         .uri("lb://bus-service"))
                 .route(p->p.path("/user-api/**")
                         .uri("lb://user-service"))
-//                .route(p->p.path("/booking-api/**")
-//                        .uri("lb://busbooking-service"))
+                .route(p->p.path("/booking-api/**")
+                        .uri("lb://busbooking-service"))
                 .build();
     }
 }

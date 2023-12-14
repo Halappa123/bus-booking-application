@@ -15,11 +15,11 @@ public class BusBookingController {
     private BusBookingService busBookingService;
 
 
-    @PostMapping("/book_buss/{origin}/{destination}/{departureDateTime}/{seatNo}")
+    @PostMapping("/book_bus/{origin}/{destination}/{departureDateTime}/{seats}")
     public ResponseEntity<BusBookingDao> bookBus(@PathVariable String origin,@PathVariable String destination,
-                                                 @PathVariable String departureDateTime,@PathVariable int seatNo
+                                                 @PathVariable String departureDateTime,@PathVariable long seats
                                                  ){
-        return new ResponseEntity<BusBookingDao>(busBookingService.saveBusByOriginAndDestination(origin,destination,departureDateTime,seatNo), HttpStatus.ACCEPTED);
+        return new ResponseEntity<BusBookingDao>(busBookingService.saveBusByOriginAndDestinationDepartureDateTimeAndSeats(origin,destination,departureDateTime,seats), HttpStatus.ACCEPTED);
 
     }
 

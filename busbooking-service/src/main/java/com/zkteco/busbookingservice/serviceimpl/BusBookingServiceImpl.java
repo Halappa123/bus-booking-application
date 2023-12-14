@@ -22,34 +22,36 @@ public class BusBookingServiceImpl implements BusBookingService {
     @Autowired
     private BusBookingRepository busBookingRepository;
     @Override
-    public BusBookingDao saveBusByOriginAndDestination(String origin, String destination, String departureDateTime, int seatNo) {
-// Check if bus already exists with same parameters
-        BusBookingDao existingBooking = busBookingRepository.findByOriginAndDestinationAndDepartureDateTimeAndSeatNo(origin, destination, departureDateTime, seatNo);
-        if (existingBooking != null) {
-            return existingBooking; // Bus already booked
-        }
+    public BusBookingDao saveBusByOriginAndDestinationDepartureDateTimeAndSeats(String origin, String destination, String departureDateTime, long seats) {
+  //      Check if bus already exists with same parameters
+//        BusBookingDao existingBooking = busBookingRepository.findByOriginAndDestinationAndDepartureDateTimeAndSeats(origin, destination, departureDateTime, seats);
+//        if (existingBooking != null) {
+//            return existingBooking; // Bus already booked
+//        }
 
         // Retrieve bus service from WebClient
         WebClient webClient = WebClient.create(baseUrl);
 
         Flux<BusService> busServiceFlux = webClient.get()
-                .uri("/book_bus/{origin}/{destination}/{departureDateTime}")
+                .uri("/get_all_bus_details")
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .bodyToFlux(BusService.class)
                 .filter(bus -> origin.equals(bus.getOrigin()) && destination.equals(bus.getDestination())
-                        && departureDateTime.equals(bus.getDepartureDateTime()));
+                        && departureDateTime.equals(bus.getDepartureDateTime()) && seats>=(bus.getAvailableSeats()));
 
         // Collect bus service into a list
-        List<BusService> matchingBuses = busServiceFlux.collectList().block();
+       List<BusService> matchingBuses = busServiceFlux.collectList().block();
 
         // Check if any bus found
-        if (matchingBuses.isEmpty()) {
+        //assert matchingBuses != null;
+        if (matchingBuses==null) {
             return null; // No matching bus found
         }
 
         BusBookingDao busBookingDao=new BusBookingDao();
         BeanUtils.copyProperties(matchingBuses,busBookingDao);
+        System.out.println("Bus Booked with bus details are "+busBookingDao);
 
         return busBookingRepository.save(busBookingDao);
 
